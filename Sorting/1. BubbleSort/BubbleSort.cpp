@@ -70,6 +70,3 @@ void printSet(int a[], size_t size) {
     }
     cout << endl;
 }
-
-class Product{};
-using NODE = Product;
