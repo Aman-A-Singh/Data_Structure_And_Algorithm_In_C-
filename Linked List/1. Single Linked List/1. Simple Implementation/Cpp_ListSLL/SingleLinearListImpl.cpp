@@ -212,23 +212,108 @@ NODE* deleteNodeByName(NODE *start, std::string nameToBeDeleted) {
         }
         //delete node
         free(ptr);
-        std::cout << nameToBeDeleted << "\n\t\'s Record has been deleted" << std::endl;
+        std::cout <<"\t" << nameToBeDeleted << "\'s Record has been deleted" << std::endl;
     }
     return start;
 }
 
-NODE* reverseList(NODE *ptr) {
-    return NULL;
+NODE* reverseList(NODE *start) {
+    NODE *ptr = NULL;
+    NODE *temp = NULL;
+    NODE *ptr1 = NULL;
+    // check if the list contains some node
+    if (isListEmpty(start)) { // if list is not empty
+        std::cout << "\tThe list is empty\n";
+    } else {
+        ptr = start; // make ptr point to first node
+        temp = ptr->next; //make temp point to second node
+        ptr->next = NULL; //make 1st node as last node
+        while (temp != NULL) {
+            ptr1 = temp->next;
+            temp->next = ptr;
+            ptr = temp;
+            temp = ptr1;
+        }
+        start = ptr;
+    }
+    return start;
 }
 
-size_t countNodes(NODE*ptr) {
-    return 0;
+size_t countNodes(NODE* ptr) {
+    size_t count = 0;
+    // check if the list contains some node
+    if (isListEmpty(ptr)) { // if list is not empty
+        std::cout << "\tThe list is empty\n";
+    } else {
+        while (ptr != NULL) {
+            count++;
+            ptr = ptr->next;
+        }
+    }
+    return count;
 }
 
-NODE* sort(NODE*ptr) {
-    return NULL;
+NODE* sort(NODE*start) {
+    NODE *ptr1;
+    NODE *temp1;
+    NODE *ptr2;
+    NODE *temp2;
+    size_t i;
+    size_t j;
+    size_t no_nodes;
+
+    if (isListEmpty(start)) {
+        std::cout << "\tThe list is empty\n";
+    } else {
+        //count number of nodes in the list
+        no_nodes = countNodes(start);
+
+        for (i = 2; i <= no_nodes; ++i) {
+            //Move ptr1 to ith node
+            ptr1 = move(start, i);
+            //Move temp1 to (i-1)th node
+            temp1 = move(start, i - 1);
+            //compare node at ith position(ptr) with all nodes from the 
+            //beginning of the list till we encounter a node whose rollNo
+            //is greater than the node at ith position
+            for (j = 1; j < i; ++j) {
+                //move ptr2 to jth position
+                ptr2 = move(start, j);
+                //move temp2 to (j-1)th position
+                temp2 = move(start, j - 1);
+                //Check if rollno of ith node is less than rollNo of jth node
+                if (ptr1->roll < ptr2->roll) {
+                    //insert ith node before the node at jth position
+                    temp1->next = ptr1->next;
+                    ptr1->next = ptr2;
+                    // if node at ith position is inserted at 1st position
+                    //make list pointer start point to new first node
+                    if (ptr2 == start) {
+                        start = ptr1;
+                    } else {
+                        temp2->next = ptr1;
+                    }
+                    break; //terminate inner 'j' loop
+                }
+            }//end of j loop
+        }//end of i loop
+    }
+    return start;
 }
 
-NODE* move(NODE* ptr, int position) {
-    return NULL;
+//function move returns the address of the i th
+//node in the linked list from the start
+
+NODE* move(NODE* start, int position) {
+    NODE *ptr = NULL;
+    if (!isListEmpty(start)) {
+        if (position > 0) {
+            ptr = start;
+            while (position > 1) {
+                ptr = ptr->next;
+                --position;
+            }
+        }
+    }
+    return ptr;
 }

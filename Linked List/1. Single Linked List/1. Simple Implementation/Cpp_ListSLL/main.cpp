@@ -65,7 +65,7 @@ int main() {
                 cout << "\tThe list has been reversed\n";
                 break;
             case COUNT_NODES:
-                cout << "\tNumber of nodes = %zu\n", countNodes(start);
+                cout << "\tNumber of nodes = " <<  countNodes(start) << endl;
                 break;
             case SORT_LIST:
                 start = sort(start);
