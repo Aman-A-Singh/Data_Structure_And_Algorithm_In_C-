@@ -1,0 +1,2 @@
+﻿  CPP_SLL_SmartPointers.cpp
+D:\Data Structure and Algorithm\Programs\VisualStudio\DataStructure\CPP_SLL_SmartPointers\SingleLinkedList.h(184): error C4703: potentially uninitialized local pointer variable 'temp' used
