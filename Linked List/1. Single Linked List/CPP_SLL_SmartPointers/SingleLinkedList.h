@@ -33,6 +33,8 @@ public:
 	bool isEmpty();
 	/*Prints the Nodes from the List*/
 	void print();
+	/*Delete the Node from the List if the given position
+	Returns true on success else throw std::range_error*/
 	bool remove(size_t position);
 	/*Delete the Node from the List by comparing the record*/
 	bool remove(const T& record);
@@ -67,6 +69,7 @@ SingleLinkedList<T>::Node::Node(const Node& other) {
 template <typename T>
 SingleLinkedList<T>::SingleLinkedList() {
 	start.reset();
+	number_of_nodes = 0;
 }
 
 /*Destructor for List*/
@@ -172,10 +175,11 @@ inline bool SingleLinkedList<T>::remove(const T& record)
 		/*Move the ownership of start->next pointer to the start pointer.
 		The 1st node will have no owner. Hence it will get destroyed automatically*/
 		start = std::move(ptr->next);
+		number_of_nodes--;
 		return true;
 	}
 	else {
-		Node* temp;
+		Node* temp = nullptr;
 		//Traverse till the record is not found
 		while (ptr->element != record) {
 			temp = ptr; // follows ptr
@@ -183,6 +187,7 @@ inline bool SingleLinkedList<T>::remove(const T& record)
 		}
 		temp->next = std::move(ptr->next);
 	}
+	number_of_nodes--;
 	return true;
 }
 
@@ -206,4 +211,6 @@ inline auto SingleLinkedList<T>::search(const T& record)
 template<typename T>
 inline void SingleLinkedList<T>::resetList()
 {
+	start.reset();
+	number_of_nodes = 0;
 }
