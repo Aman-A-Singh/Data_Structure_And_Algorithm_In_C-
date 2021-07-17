@@ -1,0 +1,6 @@
+﻿  CPP_SCLL_Raw_Pointer.cpp
+D:\Data Structure and Algorithm\Programs\VisualStudio\DataStructure\CPP_SCLL_Raw_Pointer\SingleCircularLinkedList.h(116,16): warning C4018: '<': signed/unsigned mismatch
+D:\Data Structure and Algorithm\Programs\VisualStudio\DataStructure\CPP_SCLL_Raw_Pointer\SingleCircularLinkedList.h(100): message : while compiling class template member function 'void SingleCircularLinkedList<std::string>::removeAt(size_t)'
+D:\Data Structure and Algorithm\Programs\VisualStudio\DataStructure\CPP_SCLL_Raw_Pointer\CPP_SCLL_Raw_Pointer.cpp(20): message : see reference to function template instantiation 'void SingleCircularLinkedList<std::string>::removeAt(size_t)' being compiled
+D:\Data Structure and Algorithm\Programs\VisualStudio\DataStructure\CPP_SCLL_Raw_Pointer\CPP_SCLL_Raw_Pointer.cpp(14): message : see reference to class template instantiation 'SingleCircularLinkedList<std::string>' being compiled
+  CPP_SCLL_Raw_Pointer.vcxproj -> D:\Data Structure and Algorithm\Programs\VisualStudio\DataStructure\Debug\CPP_SCLL_Raw_Pointer.exe
