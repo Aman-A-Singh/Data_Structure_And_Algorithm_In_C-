@@ -98,30 +98,38 @@ void SingleCircularLinkedList<T>::clear() {
 template<typename T>
 inline void SingleCircularLinkedList<T>::removeAt(size_t position)
 {
+	//check if the list is empty
 	if (isEmpty()) {
 		throw std::range_error("The List is Empty");
 	}
-	int count{ 1 };
 	if (position > number_of_nodes) {
 		throw std::out_of_range("The Position is out of list");
-	}else if (position == 1) {
-		start = start->next;
+	}
+	Node* ptr{ start };
+	size_t count{ 1 };
+	if (position == 1) {
+		/* Start now is the owner of the second node.*/
+		start = ptr->next;
+		/*last->next will point to second node*/
 		last->next = start;
 		number_of_nodes--;
 		return;
 	}
 	else {
-		Node* ptr{ start };
-		Node* temp = nullptr;
-		while (count < position) {
-			temp = ptr;
+		while (position > (count+1)) {
 			ptr = ptr->next;
 			count++;
-			if (position == number_of_nodes) {
-				last = temp;
-			}
 		}
-		temp->next = ptr->next;
+		/*Ptr is currently at node number (position-1)
+		 temp_ptr will point to node to be deleted ie node at position
+		 */
+		Node* temp_ptr = ptr->next;
+		/*next pointer of the node at (position-1) becomes the owner
+		 of the node at (position+1)*/
+		ptr->next = temp_ptr->next;
+		if (position == number_of_nodes) {
+			last = ptr;
+		}
 		number_of_nodes--;
 		return;
 	}

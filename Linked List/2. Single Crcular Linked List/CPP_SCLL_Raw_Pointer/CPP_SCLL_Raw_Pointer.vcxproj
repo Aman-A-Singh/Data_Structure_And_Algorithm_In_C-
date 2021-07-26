@@ -139,9 +139,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Book.cpp" />
     <ClCompile Include="CPP_SCLL_Raw_Pointer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Book.h" />
     <ClInclude Include="SingleCircularLinkedList.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
