@@ -112,6 +112,7 @@ inline void SingleCircularLinkedList<T>::removeAt(size_t position)
 		start = ptr->next;
 		/*last->next will point to second node*/
 		last->next = start;
+		delete ptr;
 		number_of_nodes--;
 		return;
 	}
@@ -127,6 +128,7 @@ inline void SingleCircularLinkedList<T>::removeAt(size_t position)
 		/*next pointer of the node at (position-1) becomes the owner
 		 of the node at (position+1)*/
 		ptr->next = temp_ptr->next;
+		delete temp_ptr;
 		if (position == number_of_nodes) {
 			last = ptr;
 		}
