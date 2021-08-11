@@ -16,6 +16,8 @@ void testString() {
 		dllString.append("ddd");
 		dllString.append("eee");
 		dllString.printForward();
+		dllString.remove(5);
+		dllString.printForward();
 
 	}
 	catch(std::range_error &err){

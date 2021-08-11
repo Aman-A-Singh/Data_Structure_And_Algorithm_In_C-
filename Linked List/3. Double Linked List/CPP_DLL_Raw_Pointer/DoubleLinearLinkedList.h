@@ -20,11 +20,11 @@ public:
 	/*Prints the Nodes from the List in forward direction*/
 	void printForward();
 	///*Prints the Nodes from the List in reverse direction*/
-	//void printReverse();
+	void printReverse();
 	/*Returns true if the list is empty otherwise returns false*/
 	bool isEmpty();
-	///*Delete the Node from the List by Position*/
-	//bool remove(size_t position);
+	/*Delete the Node from the List by Position*/
+	bool remove(size_t position);
 	///*Delete the Node from the List by comparing the record*/
 	//bool remove(T& record);
 	///*Search for the record in the list. On success returns shared_ptr
@@ -77,4 +77,66 @@ inline void DoubleLinearLinkedList<T>::printForward()
 			ptr = ptr->next;
 		}
 	}
+}
+
+
+template<typename T>
+inline void DoubleLinearLinkedList<T>::printReverse()
+{
+	if (isEmpty()) {
+		throw std::range_error("List is Empty");
+	}
+	else {
+		Node* ptr = tail;
+		while (ptr != NULL) {
+			std::cout << ptr->data << std::endl;
+			ptr = ptr->prev;
+		}
+	}
+}
+
+template<typename T>
+inline bool DoubleLinearLinkedList<T>::remove(size_t position)
+{
+	if (isEmpty()) {
+		throw std::range_error("List is Empty");
+	}
+	else if (position > number_of_nodes) {
+		throw std::out_of_range("Position out of List");
+	}
+	else {
+		//If the node to delete is first node
+		if (position == 1) {
+			Node* ptr = head;
+			//2nd Node in the list becomes the head
+			//make head point to the ssecond node
+			head = head->next;
+			head->prev = NULL;
+			//release the memory of node deleted
+			delete(ptr);
+			number_of_nodes--;
+			return true;
+		}//if the node to delete is the last node
+		else if (position == number_of_nodes) {
+			Node* ptr = tail;
+			tail = tail->prev;
+			tail->next = NULL;
+			delete(ptr);
+			number_of_nodes--;
+			return true;
+		}
+		else {
+			Node* ptr = head;
+			for (size_t count{ 1 };count < position;count++) {
+				ptr = ptr->next;
+			}
+			/*ptr will point to the node which ic to be delete*/
+			ptr->next->prev = ptr->prev;
+			ptr->prev->next = ptr->next;
+			delete(ptr);
+			number_of_nodes--;
+			return true;
+		}
+	}
+	return false;
 }
