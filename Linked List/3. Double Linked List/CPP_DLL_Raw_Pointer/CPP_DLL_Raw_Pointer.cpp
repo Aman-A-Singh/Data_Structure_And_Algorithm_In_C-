@@ -8,7 +8,7 @@ int main()
 }
 
 void testString() {
-	DoubleLinearLinkedList<std::string> dllString;
+	DoubleLinearLinkedList::DoubleLinearLinkedList<std::string> dllString;
 	try{
 		dllString.append("aaa");
 		dllString.append("bbb");

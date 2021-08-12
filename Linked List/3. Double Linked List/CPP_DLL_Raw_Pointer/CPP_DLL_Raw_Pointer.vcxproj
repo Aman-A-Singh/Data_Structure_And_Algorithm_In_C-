@@ -142,6 +142,7 @@
     <ClCompile Include="CPP_DLL_Raw_Pointer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DoubleLineaarLinkedList_Imp.h" />
     <ClInclude Include="DoubleLinearLinkedList.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
