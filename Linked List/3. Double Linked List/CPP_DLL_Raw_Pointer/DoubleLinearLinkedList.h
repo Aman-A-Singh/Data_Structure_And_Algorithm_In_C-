@@ -29,7 +29,8 @@ public:
 	//bool remove(T& record);
 	///*Search for the record in the list. On success returns shared_ptr
 	//Pointing to the book and on failure returns nullptr*/
-	//auto search(T& record);
+	auto search(T& record);
+	auto search(T&& record);
 	/*Reset the List making it empty*/
 	//void resetList();
 };
@@ -139,4 +140,25 @@ inline bool DoubleLinearLinkedList<T>::remove(size_t position)
 		}
 	}
 	return false;
+}
+
+template<typename T>
+inline auto DoubleLinearLinkedList<T>::search(T&& record)
+{
+	return search(std::move(record));
+}
+
+template<typename T>
+inline auto DoubleLinearLinkedList<T>::search(T& record)
+{
+	if (isEmpty()) {
+		throw std::range_error("List is Empty");
+	}
+	Node* ptr = head;
+	while (ptr->next != NULL) {
+		if (ptr->data = record) {
+			return ptr;
+		}
+	}
+	return ptr;
 }
