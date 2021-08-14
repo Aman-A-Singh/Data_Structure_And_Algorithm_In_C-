@@ -1,3 +1,4 @@
+#include "DoubleLinearLinkedList.h"
 #pragma once
 
 namespace DoubleLinearLinkedList {
@@ -115,8 +116,44 @@ namespace DoubleLinearLinkedList {
 	}
 
 	template<typename T>
+	inline bool DoubleLinearLinkedList<T>::remove(T& record)
+	{
+		//check if the list is empty
+		if (isEmpty()) {
+			throw std::out_of_range("The List is empty!");
+		}
+		//executes if list is not empty
+		auto* ptr = search(record);
+		if (ptr == NULL) {//iif the record is not found
+			return false;
+		}
+		else {
+			//if the node to be deleted is the head node
+			if (ptr == head) {
+				head = head->next;//make head point the the second node
+				//NULL second node's prev
+				head->prev = NULL;
+			}
+			else if (ptr == tail) {//if the node to be deleted is the last node in the list
+				//make tail point to the penultamate node
+				tail = tail->prev;
+				//reset tail's next
+				tail->next = NULL;
+			}
+			else {
+				//if the node to be deleted is a node in between
+				ptr->next->prev = ptr->prev;
+				ptr->prev->next = ptr->next;
+			}
+		}
+		delete(ptr);
+		return false;
+	}
+
+	template<typename T>
 	inline auto DoubleLinearLinkedList<T>::search(T& record)
 	{
+		//check if the list is empty
 		if (isEmpty()) {
 			throw std::range_error("List is Empty");
 		}
