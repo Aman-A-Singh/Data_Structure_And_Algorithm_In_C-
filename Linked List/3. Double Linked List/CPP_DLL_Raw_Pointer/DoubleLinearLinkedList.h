@@ -27,14 +27,14 @@ namespace DoubleLinearLinkedList {
 		bool isEmpty();
 		/*Delete the Node from the List by Position*/
 		bool remove(size_t position);
-		///*Delete the Node from the List by comparing the record*/
+		/*Delete the Node from the List by comparing the record*/
 		bool remove(T& record);
-		///*Search for the record in the list. On success returns shared_ptr
+		/*Search for the record in the list. On success returns shared_ptr
 		//Pointing to the book and on failure returns nullptr*/
 		auto search(T& record);
 		auto search(T&& record);
 		/*Reset the List making it empty*/
-		//void resetList();
+		void resetList();
 	};
 }
 

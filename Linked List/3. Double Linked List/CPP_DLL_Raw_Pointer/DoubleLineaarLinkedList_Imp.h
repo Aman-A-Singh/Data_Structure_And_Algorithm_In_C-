@@ -165,4 +165,21 @@ namespace DoubleLinearLinkedList {
 		}
 		return ptr;
 	}
+	template<typename T>
+	inline void DoubleLinearLinkedList<T>::resetList()
+	{
+		if (isEmpty()) {
+			return;
+		}
+		else {
+			Node* ptr;
+			while (head->next != NULL) {
+				ptr = head;
+				head = head->next;
+				delete(ptr);
+			}
+			delete(head);
+			head = NULL;
+		}
+	}
 }

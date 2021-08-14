@@ -18,6 +18,8 @@ void testString() {
 		dllString.printForward();
 		dllString.remove(5);
 		dllString.printForward();
+		dllString.resetList();
+		dllString.printForward();
 
 	}
 	catch(std::range_error &err){
