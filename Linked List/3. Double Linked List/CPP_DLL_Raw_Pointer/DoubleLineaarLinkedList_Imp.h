@@ -159,7 +159,7 @@ namespace DoubleLinearLinkedList {
 		}
 		Node* ptr = head;
 		while (ptr->next != NULL) {
-			if (ptr->data = record) {
+			if (ptr->data == record) {
 				return ptr;
 			}
 		}

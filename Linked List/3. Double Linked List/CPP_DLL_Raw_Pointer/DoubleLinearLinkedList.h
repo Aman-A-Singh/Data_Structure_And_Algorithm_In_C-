@@ -21,7 +21,7 @@ namespace DoubleLinearLinkedList {
 		void append(const T&);
 		/*Prints the Nodes from the List in forward direction*/
 		void printForward();
-		///*Prints the Nodes from the List in reverse direction*/
+		/*Prints the Nodes from the List in reverse direction*/
 		void printReverse();
 		/*Returns true if the list is empty otherwise returns false*/
 		bool isEmpty();
@@ -30,7 +30,7 @@ namespace DoubleLinearLinkedList {
 		/*Delete the Node from the List by comparing the record*/
 		bool remove(T& record);
 		/*Search for the record in the list. On success returns shared_ptr
-		//Pointing to the book and on failure returns nullptr*/
+		Pointing to the book and on failure returns nullptr*/
 		auto search(T& record);
 		auto search(T&& record);
 		/*Reset the List making it empty*/

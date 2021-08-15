@@ -139,9 +139,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Book.cpp" />
     <ClCompile Include="CPP_DLL_Raw_Pointer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Book.h" />
     <ClInclude Include="DoubleLineaarLinkedList_Imp.h" />
     <ClInclude Include="DoubleLinearLinkedList.h" />
   </ItemGroup>
